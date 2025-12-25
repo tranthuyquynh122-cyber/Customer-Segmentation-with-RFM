@@ -95,7 +95,7 @@ This profiling helps determine whether **upsell/cross-sell strategies are approp
 ## 8. Visualization
 ![image alt](customer_segment_distribution_uk_nonuk.png)
 ![image alt](aov_by_segment_uk_nonuk.png)
-![image alt](Screenshot 2025-12-25 195813.png)
+![image alt](https://github.com/tranthuyquynh122-cyber/Customer-Segmentation-with-RFM/blob/f3f01bccb84cf05a427696dcc0cae338fda0bd97/Screenshot%202025-12-25%20195813.png)
 
 The project includes visualizations to support data storytelling:
 - Customer distribution by segment (UK vs Non-UK)
