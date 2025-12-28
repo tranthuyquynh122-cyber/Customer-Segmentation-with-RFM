@@ -1,159 +1,206 @@
-# Customer-Segmentation-with-RFM
+# 📊 Customer Segmentation using RFM for a Global Retail Business | Python
 
-## 1. Project Overview
-This project applies **RFM (Recency – Frequency – Monetary) analysis** to segment customers of a **global online retail company** and support the Marketing team in designing **targeted end-of-year campaigns** (Christmas & New Year).
+## 📌 Project Overview
+**Business question:** How can we segment customers based on purchasing behavior to support targeted marketing strategies?  
+**Domain:** E-commerce / Retail Analytics  
+Author: Tran Thuy Quynh  
+Date: 2025  
+Tools Used: Python (Pandas, NumPy, Matplotlib, Seaborn)
+## 📑 Table of Contents
+1. 📌 [Background & Overview](#background--overview)
+2. 📂 [Dataset Description & Data Structure](#dataset-description--data-structure)
+3. 🔎 [Final Conclusion & Recommendations](#final-conclusion--recommendations)
+---
+<a id="background--overview"></a>
+## 📌 Background & Overview
 
-Due to the large dataset size, manual segmentation using Excel is no longer feasible.  
-The objective is to build a **scalable, unbiased, and explainable segmentation pipeline in Python**, accompanied by **clear business insights and actionable recommendations**.
+### Objective:
 
+📘 **What is this project about? What Business Question will it solve?**
 
+This project applies **RFM (Recency – Frequency – Monetary) analysis** to segment customers from a **global online retail company**, with the goal of supporting data-driven marketing and customer retention strategies.
 
-## 2. Business Problem
-The Marketing team aims to:
-- Reward loyal and high-value customers
-- Convert potential customers into loyal ones
-- Re-engage customers at risk of churn
-- Avoid generic campaigns that may cause customer fatigue
+The analysis focuses on understanding purchasing behavior patterns and identifying high-value, loyal, and at-risk customer groups.
 
-**Key challenge:**  
-The dataset is **heavily dominated by UK customers**, which can bias insights if analyzed globally without market control.
+- Analyze historical transaction data to understand customer purchasing behavior  
+- Segment customers using RFM methodology  
+- Compare behavioral differences between **UK vs Non-UK markets**  
+- Support personalized marketing and retention strategies  
+- Reduce bias caused by the dominance of UK customers in the dataset
+🎯 **Main business questions:**
+- Which customer segments contribute the most to revenue?
+- Which customers are at risk of churn and need re-engagement?
+- How do customer behaviors differ between UK and Non-UK markets?
+- How can marketing campaigns be tailored by customer segment?
 
+👤 **Who is this project for?**
 
+This project is useful for:
 
-## 3. Dataset Description
-**Online Retail Dataset**  
-Transactions from **01/12/2010 to 09/12/2011**
+✔️ Marketing & CRM teams  
+✔️ Business stakeholders & decision-makers  
+✔️ E-commerce / retail companies working with customer transaction data 
 
-Main fields:
-- `InvoiceNo` – Invoice identifier (starting with “C” indicates cancellation)
-- `StockCode` – Product code
-- `Quantity` – Number of items purchased
-- `InvoiceDate` – Transaction date
-- `UnitPrice` – Price per unit
-- `CustomerID` – Unique customer identifier
-- `Country` – Customer country
+<a id="dataset-description--data-structure"></a>
+## 📂 Dataset Description & Data Structure
 
+### 📌 Data Source
+- Source: ecommerce_retail.xlsx
+- Time range: **01/12/2010 – 09/12/2011**
+- Format: `.xlsx`
+- Size: ~540,000 transaction records  
 
+### 📊 Data Structure
 
-## 4. Analytical Approach
+#### Table Used: Transaction Table
 
-### 4.1 Data Cleaning
-- Removed records with missing `CustomerID`
-- Excluded cancelled invoices
-- Filtered out invalid transactions (`Quantity ≤ 0`, `UnitPrice ≤ 0`)
-- Created transaction revenue (`Amount = Quantity × UnitPrice`)
+| Column Name | Data Type | Description |
+|------------|-----------|-------------|
+| InvoiceNo | String | Invoice identifier (starting with "C" indicates cancellation) |
+| StockCode | String | Product identifier |
+| Description | String | Product description |
+| Quantity | Integer | Quantity purchased |
+| InvoiceDate | Datetime | Transaction timestamp |
+| UnitPrice | Float | Price per unit |
+| CustomerID | Numeric | Unique customer identifier |
+| Country | String | Customer country |
 
-### 4.2 RFM Construction
-RFM metrics were calculated **per customer** using a fixed snapshot date:
+## 🛠 Main Process
 
-- **Recency:** Days since last purchase (as of **31/12/2011**)
-- **Frequency:** Number of unique invoices
-- **Monetary:** Total spending
+### 1️⃣ Data Cleaning & Preprocessing
 
-Each metric was scored from **1 to 5** using **quintile segmentation**, producing:
-- `RFM_Code` (e.g. `555`, `431`)
-- `RFM_Total` (range 3–15)
+Before performing analysis, the dataset was cleaned to ensure accuracy and reliability:
 
+- Removed transactions with missing `CustomerID`
+- Removed cancelled invoices (`InvoiceNo` starting with "C")
+- Removed invalid transactions (`Quantity ≤ 0`, `UnitPrice ≤ 0`)
+- Converted `InvoiceDate` into datetime format
+- Created transaction value:
+Amount = Quantity × UnitPrice
 
+These transformations ensure that monetary values and behavioral metrics are correctly calculated.
 
-## 5. Bias Control: UK vs Non-UK Market Split
-The dataset is dominated by customers from the **United Kingdom**.  
-If all customers are analyzed together, UK behavior will dominate insights, leading to **market bias**.
+---
 
-**Solution:**
-- Assign each customer a **Primary Country** based on highest revenue contribution
-- Split analysis into **UK** and **Non-UK** groups
+### 2️⃣ RFM Metric Construction
 
-This ensures insights are comparable **within similar market contexts**.
+RFM metrics were calculated at **customer level**, using a snapshot date of **31-12-2011**:
 
+- **Recency (R):** Number of days since the most recent purchase  
+- **Frequency (F):** Number of unique invoices  
+- **Monetary (M):** Total spending amount  
 
+Each metric was converted into a **quintile score (1–5)** to normalize customer behavior across the population.
 
-## 6. Customer Segmentation
-Customers were mapped into business-meaningful segments based on RFM patterns, including:
-- Champions
-- Loyal
-- Potential Loyalists
-- At Risk
-- Lost
+---
 
-This segmentation captures both **customer value** and **churn risk**.
+### 3️⃣ Customer Segmentation Logic
 
+Based on RFM score patterns, customers were grouped into the following segments:
 
+- **Champions** – recent, frequent, and high-value customers  
+- **Loyal** – frequent and consistently engaged customers  
+- **Potential Loyalists** – customers with growth potential  
+- **At Risk** – customers showing declining engagement  
+- **Lost** – inactive or churned customers  
 
-## 7. Segment Profiling (Beyond RFM Scores)
-To avoid purely score-based conclusions, each segment was profiled using behavioral metrics:
-- **AOV (Average Order Value)**
-- **Items per Order**
-- **Distinct SKU per Order**
-- **Average Recency**
-- **Revenue contribution**
-
-This profiling helps determine whether **upsell/cross-sell strategies are appropriate** or may cause offer fatigue.
-
-
-
-## 8. Visualization
-![image alt](customer_segment_distribution_uk_nonuk.png)
-![image alt](aov_by_segment_uk_nonuk.png)
-![image alt](https://github.com/tranthuyquynh122-cyber/Customer-Segmentation-with-RFM/blob/f3f01bccb84cf05a427696dcc0cae338fda0bd97/Screenshot%202025-12-25%20195813.png)
-
-The project includes visualizations to support data storytelling:
-- Customer distribution by segment (UK vs Non-UK)
-- AOV comparison by segment and market
-- **Heatmap of segment profiles**, highlighting behavioral differences
-
-
-
-## 9. Key Insights
-- **UK dominates the dataset**, so global analysis without market split is biased.
-- **High-value customers are not always upsell-friendly** due to already large basket sizes.
-- **At Risk** and **Lost** customers require different reactivation strategies based on historical value.
+This segmentation enables targeted and differentiated marketing strategies.
 
 
+## 📊 Visualization & Analysis
 
-## 10. Recommendations
+### 1️⃣ Customer Segment Distribution (UK vs Non-UK)
 
-### Champions
-- VIP early access and thank-you rewards
-- Curated bundles instead of aggressive upselling
-- Free shipping thresholds slightly above current AOV
+![Customer Segment Distribution](charts/segment_distribution_uk_nonuk.png)
 
-### Loyal Customers
-- Loyalty programs and reorder reminders
-- Carefully designed bundles to increase AOV
+**Insights:**
+- UK customers dominate all segments, confirming strong market imbalance.
+- Segment proportions are similar, but absolute volumes differ significantly.
+- This validates the need to analyze UK and Non-UK customers separately.
 
-### Potential Loyalists
-- Time-limited incentives to trigger second purchase
-- Focus on best-selling products
+---
 
-### At Risk
-- Win-back campaigns with limited-time vouchers
-- Personalized recommendations based on past purchases
+### 2️⃣ Average Order Value by Segment
 
-### Lost Customers
-- Low-cost seasonal reactivation campaigns
-- Avoid heavy marketing investment
+![AOV by Segment](charts/aov_by_segment_uk_nonuk.png)
+
+**Insights:**
+- Champions and Loyal segments show higher AOV.
+- Several extreme outliers indicate bulk or wholesale-like purchases.
+- Non-UK customers tend to have lower and more stable AOV distributions.
+
+➡️ High AOV does not always imply higher engagement — aggressive upselling may backfire.
+
+---
+
+### 3️⃣ RFM Heatmap – UK Market
+
+![RFM Heatmap UK](charts/rfm_score_heatmap_uk.png)
+
+**Observations:**
+- UK market shows higher Frequency across most segments.
+- Revenue is driven by transaction volume rather than high AOV.
+- Loyal and Champion segments form the backbone of total revenue.
+- Lost customers still represent a large group, indicating opportunity for reactivation campaigns.
+
+---
+
+### 4️⃣ RFM Heatmap – Non-UK Market
+![RFM Heatmap Non-UK](charts/rfm_score_heatmap_non-uk.png)
+
+**Key insights:**
+- Champions have the highest Monetary scores but relatively smaller population.
+- At-Risk customers still show strong monetary value but long inactivity → high churn risk.
+- Potential Loyalists demonstrate strong growth potential and should be nurtured.
+- Behavioral patterns differ significantly from UK, reinforcing the need for localized strategies.
+
+---
+final-conclusion--recommendations
+<a id="final-conclusion--recommendations"></a>
+## 🎯 Final Conclusion & Recommendations
+
+Based on the analysis above, the following key insights and actions are recommended:
+
+### ✅ Key Takeaways
+
+✔️ UK and Non-UK markets exhibit fundamentally different purchasing behaviors  
+✔️ UK revenue is driven by frequency, while Non-UK revenue is driven by higher AOV  
+✔️ At-Risk and Potential Loyalist segments represent high-opportunity targets  
+✔️ Applying one global campaign strategy would introduce strong bias  
+
+---
+
+### ✅ Recommendations
+
+🔹 **For Champions**
+- Launch VIP & loyalty reward programs  
+- Early access to promotions  
+- Exclusive bundles  
+
+🔹 **For Loyal Customers**
+- Cross-sell & upsell recommendations  
+- Personalized product suggestions  
+- Subscription or repeat-purchase incentives  
+
+🔹 **For Potential Loyalists**
+- Targeted onboarding & nurturing campaigns  
+- Limited-time offers to encourage repeat purchases  
+- Personalized email marketing  
+
+🔹 **For At-Risk Customers**
+- Win-back campaigns with discounts or reminders  
+- Personalized reactivation emails  
+- Time-sensitive promotions  
+
+🔹 **For Lost Customers**
+- Low-cost reactivation campaigns  
+- Exclude from aggressive promotions to reduce marketing cost  
 
 
 
-## 11. Deliverables
-- **Jupyter Notebook:** End-to-end RFM pipeline and visualization
-- **Excel Output:** Clean data, RFM table, and segment profiling
-- **Charts:** Distribution plots and heatmaps for storytelling
 
 
 
-## 12. Tools & Technologies
-- Python (pandas, numpy)
-- Data Visualization (matplotlib, seaborn)
-- Environment: Google Colab / Jupyter Notebook
 
 
-
-## 13. Business Value
-This project enables the Marketing team to:
-- Move from generic campaigns to **data-driven, customer-centric strategies**
-- Reduce churn risk
-- Improve campaign efficiency
-- Avoid market and behavioral bias in decision-making
 
