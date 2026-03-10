@@ -14,187 +14,121 @@ Tools Used: Python (Pandas, NumPy, Matplotlib, Seaborn)
 <a id="background--overview"></a>
 ## 📌 Background & Overview
 
-### Objective:
+## 📌 1. Background & Overview
 
-📘 **What is this project about? What Business Question will it solve?**
+### Objective
 
-This project applies **RFM (Recency – Frequency – Monetary) analysis** to segment customers from a **global online retail company**, with the goal of supporting data-driven marketing and customer retention strategies.
+### 📖 What is this project about?
 
-The analysis focuses on understanding purchasing behavior patterns and identifying high-value, loyal, and at-risk customer groups.
+- The Marketing team plans to launch personalized campaigns to improve **customer retention and acquisition**, especially during the holiday season. However, because the dataset is large, manually segmenting customers is no longer practical.
 
-- Analyze historical transaction data to understand customer purchasing behavior  
-- Segment customers using RFM methodology  
-- Compare behavioral differences between **UK vs Non-UK markets**  
-- Support personalized marketing and retention strategies  
-- Reduce bias caused by the dominance of UK customers in the dataset
-🎯 **Main business questions:**
-- Which customer segments contribute the most to revenue?
-- Which customers are at risk of churn and need re-engagement?
-- How do customer behaviors differ between UK and Non-UK markets?
-- How can marketing campaigns be tailored by customer segment?
+- To address this challenge, the **RFM (Recency, Frequency, Monetary) model** is applied using **Python (Google Colab)** to classify customers into different segments based on their purchasing behavior.
 
-👤 **Who is this project for?**
-
-This project is useful for:
-
-✔️ Marketing & CRM teams  
-✔️ Business stakeholders & decision-makers  
-✔️ E-commerce / retail companies working with customer transaction data 
-
-<a id="dataset-description--data-structure"></a>
-## 📂 Dataset Description & Data Structure
-
-### 📌 Data Source
-- Source: ecommerce_retail.xlsx
-- Time range: **01/12/2010 – 09/12/2011**
-- Format: `.xlsx`
-- Size: ~540,000 transaction records  
-
-### 📊 Data Structure
-
-#### Table Used: Transaction Table
-
-| Column Name | Data Type | Description |
-|------------|-----------|-------------|
-| InvoiceNo | String | Invoice identifier (starting with "C" indicates cancellation) |
-| StockCode | String | Product identifier |
-| Description | String | Product description |
-| Quantity | Integer | Quantity purchased |
-| InvoiceDate | Datetime | Transaction timestamp |
-| UnitPrice | Float | Price per unit |
-| CustomerID | Numeric | Unique customer identifier |
-| Country | String | Customer country |
-
-## 🛠 Main Process
-
-### 1️⃣ Data Cleaning & Preprocessing
-
-Before performing analysis, the dataset was cleaned to ensure accuracy and reliability:
-
-- Removed transactions with missing `CustomerID`
-- Removed cancelled invoices (`InvoiceNo` starting with "C")
-- Removed invalid transactions (`Quantity ≤ 0`, `UnitPrice ≤ 0`)
-- Converted `InvoiceDate` into datetime format
-- Created transaction value:
-Amount = Quantity × UnitPrice
-
-These transformations ensure that monetary values and behavioral metrics are correctly calculated.
+- This project covers several key steps including **data preparation, RFM score calculation, customer segmentation, visualization**, and generating **actionable recommendations** to help the Marketing and Sales teams optimize their strategies.
 
 ---
 
-### 2️⃣ RFM Metric Construction
+### 👥 Who is this project for?
 
-RFM metrics were calculated at **customer level**, using a snapshot date of **31-12-2011**:
+✔ **Marketing & Sales Department**  
+✔ **Decision-makers and business stakeholders**
 
-- **Recency (R):** Number of days since the most recent purchase  
-- **Frequency (F):** Number of unique invoices  
-- **Monetary (M):** Total spending amount  
-
-Each metric was converted into a **quintile score (1–5)** to normalize customer behavior across the population.
+These stakeholders can use the insights from this analysis to better understand customer behavior and design more effective marketing strategies.
 
 ---
 
-### 3️⃣ Customer Segmentation Logic
+### ❓ Business Questions
 
-Based on RFM score patterns, customers were grouped into the following segments:
+✔ How can customers be segmented effectively using the **RFM model**?  
 
-- **Champions** – recent, frequent, and high-value customers  
-- **Loyal** – frequent and consistently engaged customers  
-- **Potential Loyalists** – customers with growth potential  
-- **At Risk** – customers showing declining engagement  
-- **Lost** – inactive or churned customers  
+✔ Which customer groups should be prioritized for **retention and promotional campaigns**?  
 
-This segmentation enables targeted and differentiated marketing strategies.
+✔ What actionable insights can help improve **marketing strategies and customer engagement**?  
 
-
-## 📊 Visualization & Analysis
-
-### 1️⃣ Customer Segment Distribution (UK vs Non-UK)
-
-![Customer Segment Distribution](charts/segment_distribution_uk_nonuk.png)
-
-**Insights:**
-- UK customers dominate all segments, confirming strong market imbalance.
-- Segment proportions are similar, but absolute volumes differ significantly.
-- This validates the need to analyze UK and Non-UK customers separately.
+✔ What strategies should be applied to **different customer segments to maximize business value**?
+ ✔ What strategies should be applied to different customer segments to maximize business value?
 
 ---
 
-### 2️⃣ Average Order Value by Segment
+## 🧠 RFM Analysis Overview
 
-![AOV by Segment](charts/aov_by_segment_uk_nonuk.png)
+### 🔎 Why use RFM?
 
-**Insights:**
-- Champions and Loyal segments show higher AOV.
-- Several extreme outliers indicate bulk or wholesale-like purchases.
-- Non-UK customers tend to have lower and more stable AOV distributions.
+**RFM (Recency, Frequency, Monetary)** is a widely used technique for customer segmentation based on purchasing behavior.
 
-➡️ High AOV does not always imply higher engagement — aggressive upselling may backfire.
+In RFM analysis, each customer receives a score based on three dimensions of their transaction history. These scores help businesses categorize customers into different segments, making it easier to identify target audiences for marketing and sales strategies.
 
----
-
-### 3️⃣ RFM Heatmap – UK Market
-
-![RFM Heatmap UK](charts/rfm_score_heatmap_uk.png)
-
-**Observations:**
-- UK market shows higher Frequency across most segments.
-- Revenue is driven by transaction volume rather than high AOV.
-- Loyal and Champion segments form the backbone of total revenue.
-- Lost customers still represent a large group, indicating opportunity for reactivation campaigns.
+The three key metrics include:
 
 ---
 
-### 4️⃣ RFM Heatmap – Non-UK Market
-![RFM Heatmap Non-UK](charts/rfm_score_heatmap_non-uk.png)
+### 📅 Recency
 
-**Key insights:**
-- Champions have the highest Monetary scores but relatively smaller population.
-- At-Risk customers still show strong monetary value but long inactivity → high churn risk.
-- Potential Loyalists demonstrate strong growth potential and should be nurtured.
-- Behavioral patterns differ significantly from UK, reinforcing the need for localized strategies.
+Measures the amount of time since a customer's most recent purchase.
 
----
-final-conclusion--recommendations
-<a id="final-conclusion--recommendations"></a>
-## 🎯 Final Conclusion & Recommendations
-
-Based on the analysis above, the following key insights and actions are recommended:
-
-### ✅ Key Takeaways
-
-✔️ UK and Non-UK markets exhibit fundamentally different purchasing behaviors  
-✔️ UK revenue is driven by frequency, while Non-UK revenue is driven by higher AOV  
-✔️ At-Risk and Potential Loyalist segments represent high-opportunity targets  
-✔️ Applying one global campaign strategy would introduce strong bias  
+- Customers who purchased recently are more likely to respond to marketing campaigns.
+- Customers who haven't purchased for a long time may require re-engagement strategies.
 
 ---
 
-### ✅ Recommendations
+### 🔁 Frequency
 
-🔹 **For Champions**
-- Launch VIP & loyalty reward programs  
-- Early access to promotions  
-- Exclusive bundles  
+Measures how often a customer makes purchases within a given period.
 
-🔹 **For Loyal Customers**
-- Cross-sell & upsell recommendations  
-- Personalized product suggestions  
-- Subscription or repeat-purchase incentives  
+- High frequency indicates strong engagement and customer loyalty.
+- Low frequency suggests occasional or inactive customers.
 
-🔹 **For Potential Loyalists**
-- Targeted onboarding & nurturing campaigns  
-- Limited-time offers to encourage repeat purchases  
-- Personalized email marketing  
+---
 
-🔹 **For At-Risk Customers**
-- Win-back campaigns with discounts or reminders  
-- Personalized reactivation emails  
-- Time-sensitive promotions  
+### 💰 Monetary
 
-🔹 **For Lost Customers**
-- Low-cost reactivation campaigns  
-- Exclude from aggressive promotions to reduce marketing cost  
+Measures the total amount of money spent by a customer.
+
+- Customers with higher spending contribute more revenue to the business.
+- Customers with lower spending may have smaller economic impact.
+
+---
+
+By combining these three metrics, businesses can group customers based on their overall value and engagement level.
+
+Using the RFM approach enables organizations to:
+
+- Identify their **most valuable customers**
+- Detect **customers at risk of churn**
+- Design **targeted marketing campaigns**
+- Improve **customer retention and engagement strategies**
+
+### 🧩 Important Data Structure Note
+
+This dataset is stored at the **transaction-line level**, not at the customer level.
+
+That means:
+
+- one customer can have many invoices
+- one invoice can contain multiple products
+- one customer may appear many times in the raw data
+
+So before applying the RFM model, the data must be transformed from:
+
+**transaction level → customer level**
+
+This is an important step because RFM segmentation is performed **per customer**, not per transaction row.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
