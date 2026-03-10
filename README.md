@@ -199,13 +199,170 @@ SalesAmount = Quantity * UnitPrice
 ```python
 df_retail["SalesAmount"] = (df_retail["Quantity"] * df_retail["UnitPrice"])
 ```
+### ✅ Output of the cleaning step
+<img width="1039" height="359" alt="image" src="https://github.com/user-attachments/assets/50b52b5a-dec7-460c-b05e-658992627f40" />
+
+After cleaning, the dataset contains only:
+
+- valid purchases
+- customers with IDs
+- positive quantity and unit price
+- usable transaction dates
+
+This cleaned dataset is then ready for:
+
+- exploratory data analysis
+- business decision making
+- customer-level RFM calculation
 
 
+---
+
+# 🔎 4. Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis was conducted to understand overall purchasing patterns before applying customer segmentation.
+
+---
+
+## Revenue Trend Over Time
+
+The project first analyzes how revenue changes over time to identify purchasing patterns.
+
+📊 *Insert visualization: Revenue by Month*
+
+Observation:
+
+Revenue fluctuates across months, indicating possible seasonal purchasing behavior.
+
+---
+
+## Revenue Distribution by Country
+
+Next, the analysis examines revenue distribution across countries.
+
+📊 *Insert visualization: Top Countries by Revenue*
+
+Observation:
+
+The analysis shows that the **United Kingdom dominates the dataset**, contributing approximately **84.7% of total revenue**.
+
+---
+
+## Business Decision: Focus on UK Market
+
+Since the United Kingdom accounts for the majority of revenue, the project focuses the segmentation analysis on **UK customers**.
+
+This approach helps:
+
+- Avoid bias caused by mixing different market behaviors  
+- Focus on the core market that drives the majority of revenue  
+- Produce more meaningful segmentation results  
+
+---
+
+# 🧠 5. Apply RFM Model
+
+After identifying the UK market as the primary business market, the project applies the **RFM model** to segment customers.
+
+---
+
+## Recency
+
+Recency measures how recently a customer made their last purchase.
+Recency = Snapshot Date − Last Purchase Date
+Snapshot date used in this project: 2011-12-31
+
+Customers who purchased recently receive higher recency scores.
+
+---
+
+## Frequency
+
+Frequency measures how often a customer purchases.
+
+It is calculated using the number of **unique invoices per customer**.
+
+Customers who purchase frequently demonstrate stronger engagement with the business.
+
+---
+
+## Monetary
+
+Monetary measures the total spending per customer.
+Monetary = Sum of SalesAmount per customer
 
 
+Customers with higher monetary values contribute more revenue and are considered high-value customers.
 
+---
 
+# 📊 6. Visualization & Analysis
 
+Several visualizations were created to understand customer segments and purchasing behavior.
+
+---
+
+## Customer Segment Distribution
+
+📊 *Insert visualization: Customer Segment Distribution*
+
+This chart shows how customers are distributed across different RFM segments.
+
+---
+
+## Revenue Contribution by Segment
+
+📊 *Insert visualization: Revenue Contribution by Segment*
+
+This analysis identifies which customer segments generate the highest revenue.
+
+---
+
+## Average Order Value by Segment
+
+📊 *Insert visualization: Average Order Value by Segment*
+
+This chart compares purchasing behavior across customer segments.
+
+---
+
+## RFM Score Heatmap
+
+📊 *Insert visualization: Average RFM Scores by Segment*
+
+The heatmap highlights behavioral differences between segments.
+
+---
+
+# 💡 7. Insight & Recommendation
+
+Based on the RFM analysis, several key insights can guide marketing strategies.
+
+### Key Insights
+
+✔️ The United Kingdom dominates the business, contributing **84.7% of total revenue**.  
+✔️ High-value segments such as **Champions** and **Loyal Customers** generate the majority of revenue.  
+✔️ Some customers show declining activity and may be at risk of churn.
+
+---
+
+### Recommendations
+
+✔️ **Retain High-Value Customers**
+
+Champions and Loyal Customers should receive loyalty rewards and personalized marketing campaigns.
+
+✔️ **Convert Potential Loyalists**
+
+Customers in the Potential Loyalist segment represent strong growth opportunities.
+
+✔️ **Re-engage At-Risk Customers**
+
+Customers showing declining engagement should receive targeted reactivation campaigns.
+
+✔️ **Optimize Marketing Resources**
+
+Marketing efforts should focus on the segments that provide the highest long-term value.
 
 
 
