@@ -114,9 +114,91 @@ So before applying the RFM model, the data must be transformed from:
 
 This is an important step because RFM segmentation is performed **per customer**, not per transaction row.
 
+### Table Used
 
+This project uses **one main transaction table**.
 
+---
 
+### Table Schema
+
+| Column Name | Data Type | Description |
+|---|---|---|
+| InvoiceNo | object | Unique invoice number. If it starts with `"C"`, it indicates a cancelled transaction. |
+| StockCode | object | Product code |
+| Description | object | Product name |
+| Quantity | int | Number of items purchased |
+| InvoiceDate | datetime | Date and time of the transaction |
+| UnitPrice | float | Price per item |
+| CustomerID | int | Unique identifier of each customer |
+| Country | object | Customer country |
+
+Additional derived field used in the project:
+
+| Derived Column | Meaning |
+|---|---|
+| SalesAmount | `Quantity × UnitPrice` |
+
+---
+
+### 📌 Screenshot to insert here
+
+**Insert a screenshot of the raw dataset head / schema here.**
+
+**Use these code cells from your notebook:**
+- `df_retail.head()`
+- `df_retail.info()`
+- `df_retail.describe()`
+
+---
+
+## 3. Data Cleaning & Preprocessing
+
+Before applying the RFM model, the dataset must be cleaned to ensure that the analysis reflects **actual purchasing behavior**.
+
+### Step 1: Standardize column names
+Column names were stripped to remove extra spaces.
+```python
+df_retail.columns = df_retail.columns.str.strip()
+```
+
+### Step 2: Remove missing customer IDs
+Rows with missing `CustomerID` were removed because RFM is a **customer-level model**. Without customer IDs, transactions cannot be assigned to any customer.
+```python
+df_retail = df_retail.dropna(subset=["CustomerID"])
+df_retail["CustomerID"] = df_retail["CustomerID"].astype(int)
+```
+### Step 3: Remove cancelled transactions
+Orders where `InvoiceNo` starts with `"C"` were excluded because they represent cancelled purchases rather than actual sales.
+```python
+df_retail = df_retail[~df_retail["InvoiceNo"].astype(str).str.startswith("C")]
+```
+### Step 4: Remove invalid values
+Rows with:
+
+- `Quantity <= 0`
+- `UnitPrice <= 0`
+
+were removed because they do not reflect valid purchase transactions.
+```python
+df_retail = df_retail[(df_retail["Quantity"] > 0) & df_retail["UnitPrice"] > 0]
+```
+### Step 5: Convert `InvoiceDate` to datetime
+This allows time-based analysis such as:
+
+- monthly revenue trend
+- purchase recency
+- time feature extraction
+```python
+df_retail["InvoiceDate"] = pd.to_datetime(df_retail["InvoiceDate"],errors="coerce")
+df_retail = df_retail.dropna(subset=["InvoiceDate"])
+```
+### Step 6: Create `SalesAmount`
+A new variable was created:
+SalesAmount = Quantity * UnitPrice
+```python
+df_retail["SalesAmount"] = (df_retail["Quantity"] * df_retail["UnitPrice"])
+```
 
 
 
