@@ -216,6 +216,7 @@ This means the UK overwhelmingly dominates the dataset in terms of sales value.
 ### 📊 Revenue Share
 
 The revenue share table confirms this concentration:
+
 <img width="346" height="320" alt="image" src="https://github.com/user-attachments/assets/cc034d3a-6e0b-46ed-852d-372415938d43" />
 
 
