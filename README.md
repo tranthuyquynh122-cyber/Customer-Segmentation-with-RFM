@@ -105,7 +105,8 @@ The dataset consists of **two tables (sheets):**
 ---
 
 #### 📌 Sheet 2: Segmentation
-
+<details>
+<summary>Click to view RFM segmentation mapping</summary>
 ### 📊 Customer Segmentation & RFM Scores
 
 | Segment | RFM Score |
@@ -121,7 +122,8 @@ The dataset consists of **two tables (sheets):**
 | Cannot Lose Them | 155, 154, 144, 214, 215, 115, 114, 113 |
 | Hibernating Customers | 332, 322, 233, 232, 223, 222, 132, 123, 122, 212, 211 |
 | Lost Customers | 111, 112, 121, 131, 141, 151 |
-
+</details>
+---
 ---
 
 ### Relationship Between Tables
