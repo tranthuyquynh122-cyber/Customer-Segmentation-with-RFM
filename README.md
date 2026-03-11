@@ -22,9 +22,8 @@ Tools Used: Python (Pandas, NumPy, Matplotlib, Seaborn)
 
 💡 **7.** [Insight & Recommendation](#7-insight--recommendation)
 ---
-<a id="background--overview"></a>
-## 📌 Background & Overview
 
+<a id="1-background--overvie"></a>
 ## 📌 1. Background & Overview
 
 ### Objective
@@ -125,6 +124,7 @@ So before applying the RFM model, the data must be transformed from:
 
 This is an important step because RFM segmentation is performed **per customer**, not per transaction row.
 
+# 2.Dataset Description & Data Structure
 ### Table Used
 
 This project uses **one main transaction table**.
