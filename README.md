@@ -60,7 +60,8 @@ These stakeholders can use the insights from this analysis to better understand 
 ✔ What actionable insights can help improve **marketing strategies and customer engagement**?  
 
 ✔ What strategies should be applied to **different customer segments to maximize business value**?
- ✔ What strategies should be applied to different customer segments to maximize business value?
+
+✔ What strategies should be applied to different customer segments to maximize business value?
 
 ---
 
