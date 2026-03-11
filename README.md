@@ -60,108 +60,82 @@ These stakeholders can use the insights from this analysis to better understand 
 
 ---
 
-## 🧠 RFM Analysis Overview
 
-### 🔎 Why use RFM?
+## 📂 2. Dataset Description & Data Structure
 
-**RFM (Recency, Frequency, Monetary)** is a widely used technique for customer segmentation based on purchasing behavior.
+### 📌 Data Source
 
-In RFM analysis, each customer receives a score based on three dimensions of their transaction history. These scores help businesses categorize customers into different segments, making it easier to identify target audiences for marketing and sales strategies.
+The dataset used in this project is an **E-commerce retail transaction dataset** provided for customer behavior analysis.
 
-The three key metrics include:
+- **Source:** E-commerce retail transaction dataset  
+- **Size:** **541,910 rows × 8 columns** (Sheet 1: E-commerce retail transactions)  
+- **Additional Data:** Customer segmentation details in **Sheet 2**  
+- **Format:** `.xlsx` file (Excel workbook with **two sheets**)  
 
----
+## 📁 Data Structure & Relationships
 
-### 📅 Recency
+### 1️⃣ Tables Used
 
-Measures the amount of time since a customer's most recent purchase.
+The dataset consists of **two tables (sheets):**
 
-- Customers who purchased recently are more likely to respond to marketing campaigns.
-- Customers who haven't purchased for a long time may require re-engagement strategies.
+- **Sheet 1: E-commerce Retail** – Contains **transaction-level data**, including order details, customer IDs, product information, and purchase records.
 
----
-
-### 🔁 Frequency
-
-Measures how often a customer makes purchases within a given period.
-
-- High frequency indicates strong engagement and customer loyalty.
-- Low frequency suggests occasional or inactive customers.
+- **Sheet 2: Segmentation** – Stores **customer segments along with their RFM scores**, which are used for customer behavior analysis.
 
 ---
 
-### 💰 Monetary
+### 2️⃣ Table Schema & Data Snapshot
 
-Measures the total amount of money spent by a customer.
+#### 📌 Sheet 1: E-commerce Retail
 
-- Customers with higher spending contribute more revenue to the business.
-- Customers with lower spending may have smaller economic impact.
-
----
-
-By combining these three metrics, businesses can group customers based on their overall value and engagement level.
-
-Using the RFM approach enables organizations to:
-
-- Identify their **most valuable customers**
-- Detect **customers at risk of churn**
-- Design **targeted marketing campaigns**
-- Improve **customer retention and engagement strategies**
-
-### 🧩 Important Data Structure Note
-
-This dataset is stored at the **transaction-line level**, not at the customer level.
-
-That means:
-
-- one customer can have many invoices
-- one invoice can contain multiple products
-- one customer may appear many times in the raw data
-
-So before applying the RFM model, the data must be transformed from:
-
-**transaction level → customer level**
-
-This is an important step because RFM segmentation is performed **per customer**, not per transaction row.
-
-# 2.Dataset Description & Data Structure
-### Table Used
-
-This project uses **one main transaction table**.
-
----
-
-### Table Schema
+### 📄 Table Schema: E-commerce Retail
 
 | Column Name | Data Type | Description |
-|---|---|---|
-| InvoiceNo | object | Unique invoice number. If it starts with `"C"`, it indicates a cancelled transaction. |
-| StockCode | object | Product code |
-| Description | object | Product name |
-| Quantity | int | Number of items purchased |
-| InvoiceDate | datetime | Date and time of the transaction |
-| UnitPrice | float | Price per item |
-| CustomerID | int | Unique identifier of each customer |
-| Country | object | Customer country |
-
-Additional derived field used in the project:
-
-| Derived Column | Meaning |
-|---|---|
-| SalesAmount | `Quantity × UnitPrice` |
+|-------------|-----------|-------------|
+| InvoiceNo | object | Unique invoice number for each transaction (6-digit). If it starts with **"C"**, it indicates a cancellation. |
+| StockCode | object | Unique product (item) code (5-digit). |
+| Description | object | Product (item) name. |
+| Quantity | int64 | The number of units purchased per transaction. |
+| InvoiceDate | datetime64[ns] | Date and time when the transaction occurred. |
+| UnitPrice | float64 | Price per unit of the product in sterling. |
+| CustomerID | float64 | Unique 5-digit identifier for each customer. |
+| Country | object | Name of the country where the customer resides. |
 
 ---
 
-### 📌 Screenshot to insert here
+#### 📌 Sheet 2: Segmentation
 
-**Insert a screenshot of the raw dataset head / schema here.**
+### 📊 Customer Segmentation & RFM Scores
 
-**Use these code cells from your notebook:**
-- `df_retail.head()`
-- `df_retail.info()`
-- `df_retail.describe()`
+| Segment | RFM Score |
+|-------|-----------|
+| Champions | 555, 554, 544, 545, 454, 455, 445 |
+| Loyal | 543, 444, 435, 355, 354, 345, 344, 335 |
+| Potential Loyalist | 553, 551, 552, 541, 542, 533, 532, 531, 452, 451, 442, 441, 431, 453, 433, 432, 423, 353, 352, 351, 342, 341, 333, 323 |
+| New Customers | 512, 511, 422, 421, 412, 411, 311 |
+| Promising | 525, 524, 523, 522, 521, 515, 514, 513, 425, 424, 413, 414, 415, 315, 314, 313 |
+| Need Attention | 535, 534, 443, 434, 343, 334, 325, 324 |
+| About To Sleep | 331, 321, 312, 221, 213, 231, 241, 251 |
+| At Risk | 255, 254, 245, 244, 253, 252, 243, 242, 235, 234, 225, 224, 153, 152, 145, 143, 142, 135, 134, 133, 125, 124 |
+| Cannot Lose Them | 155, 154, 144, 214, 215, 115, 114, 113 |
+| Hibernating Customers | 332, 322, 233, 232, 223, 222, 132, 123, 122, 212, 211 |
+| Lost Customers | 111, 112, 121, 131, 141, 151 |
 
 ---
+
+### Relationship Between Tables
+
+The **Segmentation table** is derived from the **E-commerce Retail transaction table** after applying the **RFM model**.
+
+The relationship is established through:
+
+- **CustomerID** → used to aggregate transactions at the customer level
+- RFM scores are calculated from transactional metrics:
+  - **Recency** → days since last purchase
+  - **Frequency** → number of purchases
+  - **Monetary** → total spending
+
+This structure allows transaction data to be transformed into **customer-level behavioral insights for segmentation and marketing analysis.**
 
 ## 3. Data Cleaning & Preprocessing
 
@@ -513,14 +487,8 @@ rfm_uk_table["RFM_Code"] = (
     + rfm_uk_table["M_score"].astype(str)
 )
 ```
+<img width="716" height="358" alt="image" src="https://github.com/user-attachments/assets/707290a8-6502-406a-b915-43715a99ff99" />
 
-Example:
-
-| R_score | F_score | M_score | RFM Code |
-|---|---|---|---|
-| 5 | 5 | 5 | 555 |
-| 5 | 4 | 5 | 545 |
-| 1 | 1 | 5 | 115 |
 
 The RFM code represents the overall customer value profile.
 
@@ -572,15 +540,6 @@ def assign_rfm_segment(row):
 
 rfm_uk_table["Segment"] = rfm_uk_table.apply(assign_rfm_segment, axis=1)
 ```
-
-Example result:
-
-| CustomerID | RFM_Code | Segment |
-|---|---|---|
-| 12346 | 115 | Hibernating |
-| 12747 | 555 | Champions |
-| 12748 | 555 | Champions |
-| 12749 | 545 | Champions |
 
 ---
 
@@ -947,7 +906,7 @@ This confirms that the business depends heavily on its loyal and high-value cust
 
 The spike in late 2011 suggests that the business benefits strongly from seasonal demand, but this also highlights the importance of maintaining a healthy core customer base outside seasonal peaks.
 
----
+
 
 # 🔑 Key Takeaways from Visualization & Analysis
 
@@ -968,8 +927,10 @@ This indicates customer disengagement is a major challenge and should not be ign
 ### 5. Frequency is a major business driver
 The trend charts show that repeat purchasing activity is strongly associated with growth in both customer value and revenue, especially during peak season.
 
+---
 
 # 💡 7. Insight & Recommendation
+
 
 ## A. Customer Segmentation Strategy
 
