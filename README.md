@@ -87,7 +87,8 @@ The dataset consists of **two tables (sheets):**
 ### 2️⃣ Table Schema & Data Snapshot
 
 #### 📌 Sheet 1: E-commerce Retail
-
+<details>
+<summary>📄 Dataset Schema (Click to expand)</summary>
 ### 📄 Table Schema: E-commerce Retail
 
 | Column Name | Data Type | Description |
