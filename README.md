@@ -26,8 +26,7 @@ Tools Used: Python (Pandas, NumPy, Matplotlib, Seaborn)
 
 
 ---
-
-<a id="background--overview"></a>
+<a id="1-background--overview"></a>
 ## 📌 1. Background & Overview
 
 ### Objective
