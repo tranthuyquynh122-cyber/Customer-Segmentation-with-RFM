@@ -1,4 +1,4 @@
-# 📊 Customer Segmentation using RFM for a Global Retail Business | Python
+# 📊 Customer Segmentation using RFM for For Marketing Campaigns in A Retail Global SuperStore | Python
 
 ## 📌 Project Overview
 **Business question:** How can we segment customers based on purchasing behavior to support targeted marketing strategies?  
@@ -9,19 +9,19 @@ Tools Used: Python (Pandas, NumPy, Matplotlib, Seaborn)
 
 ## 📑 Table of Contents
 
-📌 **1.** [Background & Overview](#1-background--overview)
+📌 1. [Background & Overview](#1-background--overview)
 
-📂 **2.** [Dataset Description & Data Structure](#2-dataset-description--data-structure)
+📂 2. [Dataset Description & Data Structure](#2-dataset-description--data-structure)
 
-🧹 **3.** [Data Cleaning & Preprocessing](#3-data-cleaning--preprocessing)
+🧹 3. [Data Cleaning & Preprocessing](#3-data-cleaning--preprocessing)
 
-🔎 **4.** [Exploratory Data Analysis (EDA)](#4-exploratory-data-analysis-eda)
+🔎 4. [Exploratory Data Analysis](#4-exploratory-data-analysis-eda)
 
-📊 **5.** [Apply RFM Model](#5-apply-rfm-model)
+📊 5. [Apply RFM Model](#5-apply-rfm-model)
 
-📈 **6.** [Visualization & Analysis](#6-visualization--analysis)
+📈 6. [Visualization & Analysis](#6-visualization--analysis)
 
-💡 **7.** [Insight & Recommendation](#7-insight--recommendation)
+💡7. [Insight & Recommendation](#7-insight--recommendation)
 
 
 
@@ -656,42 +656,7 @@ This implies that the business should prioritize:
 The strong revenue contribution from **At Risk** customers is especially important because it signals potential revenue loss if these customers are not recovered.
 
 ---
-
-# 6.3 Average Order Value by Segment
-
-This boxplot compares the distribution of **average order value** across customer segments.
-
-<img width="1326" height="455" alt="image" src="https://github.com/user-attachments/assets/e5b12741-9e85-477a-88dc-73984718c406" />
-
-
-### Observation
-
-Most segments have relatively low average order values clustered near the bottom of the chart, while several segments contain extreme outliers.
-
-A few observations stand out:
-
-- **Potential Loyalists** show some very large outliers, including one extremely high-value case
-- **Hibernating** also includes a very large outlier
-- **At Risk** contains several notable high-value orders
-- Core segments such as **Champions** and **Loyal Customers** appear more consistently distributed, although they also include some larger-value purchases
-
-### Insight
-
-This chart suggests that segment value is not only driven by frequency, but also by **basket size variation**.
-
-Some segments with relatively moderate overall engagement may still include **very high-value transactions**.
-
-This is particularly important for:
-
-- **At Risk** customers, because they may have historically placed valuable orders
-- **Potential Loyalists**, because some of them are already showing strong purchase value and could become highly profitable if nurtured properly
-
-In short, not all low-frequency or non-core segments are low-value.  
-Some contain high-spending customers who deserve more strategic attention.
-
----
-
-# 6.4 Average R/F/M Scores by Segment
+# 6.3 Average R/F/M Scores by Segment
 
 This heatmap compares the average **Recency, Frequency, and Monetary scores** across segments.
 <img width="795" height="557" alt="image" src="https://github.com/user-attachments/assets/20ddc29c-b17c-4f1b-9f23-e6778d9eb4e9" />
@@ -753,7 +718,7 @@ This is important because it confirms that the segments are not just labels — 
 
 ---
 
-# 6.5 Group Segment Contribution
+# 6.4 Group Segment Contribution
 
 ### Group Customer Segments
 
@@ -800,7 +765,7 @@ This reinforces the need for two parallel strategies:
 
 ---
 
-# 6.6 Segment Distribution Over Time
+# 6.5 Segment Distribution Over Time
 
 This line chart tracks how the grouped customer segments change across months.
 
@@ -828,7 +793,7 @@ However, the fluctuations in **Inactive & Lost** show that customer drop-off rem
 
 ---
 
-# 6.7 Trend of Recency by Group Segment
+# 6.6 Trend of Recency by Group Segment
 
 This stacked area chart shows how **Recency** changes over time across grouped customer segments.
 <img width="1099" height="424" alt="image" src="https://github.com/user-attachments/assets/4b9ee955-9ccc-441d-b23b-c477fb3d3705" />
@@ -850,7 +815,7 @@ This is another signal that the business experiences stronger customer activatio
 
 ---
 
-# 6.8 Trend of Frequency by Group Segment
+# 6.7 Trend of Frequency by Group Segment
 
 This stacked area chart tracks **Frequency** over time across grouped segments.
 
@@ -876,7 +841,7 @@ Since Frequency is central to loyalty, this supports the business impact argumen
 
 ---
 
-# 6.9 Trend of Monetary by Group Segment
+# 6.8 Trend of Monetary by Group Segment
 
 This stacked area chart tracks **Monetary value** over time across grouped segments.
 
@@ -930,10 +895,11 @@ The trend charts show that repeat purchasing activity is strongly associated wit
 👉 Based on the insights above, we recommend the following:
 
 ### 1. Loyal & High Value Group (38.3%)
+1. Loyal & High Value Group (38.3%)
 
-- 38.3% of customers, **highest revenue contribution**.
-- Strong purchasing frequency and stable engagement.
-- High willingness to spend and respond to premium offerings.
+- Represent **38.3% of customers but contribute the majority of total revenue**, indicating a strong concentration of value among loyal and high-frequency buyers.
+- Stable purchasing behavior and high engagement.
+- High willingness to pay for premium products.
 
 🔹 **Recommendation:**
 
@@ -948,9 +914,9 @@ Protecting and nurturing this group helps **maximize customer lifetime value and
 
 ### 2. High-Risk Customers (23.5%)
 
-- Previously high-value customers but **declining engagement**.
-- Increasing Recency and decreasing purchase frequency.
-- Risk of moving into inactive segments.
+- Previously generated significant revenue but are now purchasing less frequently.
+- Increasing recency indicates declining engagement.
+- This segment represents **potential revenue loss if churn occurs**.
 
 🔹 **Recommendation:**
 
@@ -965,9 +931,9 @@ Reactivating these customers can **recover lost revenue and reduce churn risk**.
 
 ### 3. New & Potential Customers (11.7%)
 
-- Lower spending but **strong growth potential**.
-- Increasing purchase activity but still unstable.
-- Opportunity to build long-term loyalty.
+- Lower spending currently but strong growth potential.
+- Low purchase frequency indicates that buying habits are not yet established.
+- Encouraging repeat purchases can significantly increase **customer lifetime value (CLV)**.
 
 🔹 **Recommendation:**
 
@@ -1004,9 +970,14 @@ In an e-commerce retail environment, the RFM (Recency, Frequency, Monetary) mode
 - Businesses should maintain engagement through **loyalty programs, personalized offers, and exclusive deals**.
 
 ---
+### 📈 Business Impact
 
-### Final Takeaway
+The analysis shows that customer value is highly concentrated among loyal and high-frequency buyers.
 
-Customer value is highly concentrated in **loyal and high-frequency buyers**, while a significant portion of customers are either new or at risk of churn.
+By focusing on the following strategies, the business can improve long-term performance:
 
-By focusing on **increasing purchase frequency, retaining high-value customers, and reactivating declining segments**, the business can improve **customer lifetime value and long-term revenue growth**.
+- Retain and reward **high-value customers** to maximize lifetime value.
+- Re-engage **high-risk customers** before they churn.
+- Encourage **repeat purchases among new customers** to build purchasing habits.
+
+These actions can help increase **customer lifetime value**, reduce **customer churn**, and drive **sustainable revenue growth** in an e-commerce retail environment.
