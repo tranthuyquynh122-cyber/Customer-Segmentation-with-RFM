@@ -28,13 +28,15 @@ Tools Used: Python (Pandas, NumPy, Matplotlib, Seaborn)
 ### Objective
 
 ### 📖 What is this project about?
+- E-commerce businesses generate a large volume of transactional data every day. However, transforming this data into meaningful insights about customer value and behavior is often challenging.
 
-- The Marketing team plans to launch personalized campaigns to improve **customer retention and acquisition**, especially during the holiday season. However, because the dataset is large, manually segmenting customers is no longer practical.
+- Without a structured customer segmentation approach, companies tend to treat all customers the same. This leads to inefficient marketing campaigns, wasted marketing budgets, and missed opportunities to retain high-value customers.
 
-- To address this challenge, the **RFM (Recency, Frequency, Monetary) model** is applied using **Python (Google Colab)** to classify customers into different segments based on their purchasing behavior.
+- To address this problem, this project applies the **RFM (Recency, Frequency, Monetary) model** to analyze customer purchasing behavior and segment customers into meaningful groups.
 
+- By identifying segments such as **Champions, Loyal Customers, Potential Loyalists, and At-Risk Customers**, businesses can better understand customer value and design more targeted marketing strategies to improve **customer retention, engagement, and long-term revenue growth**.
+  
 - This project covers several key steps including **data preparation, RFM score calculation, customer segmentation, visualization**, and generating **actionable recommendations** to help the Marketing and Sales teams optimize their strategies.
-
 ---
 
 ### 👥 Who is this project for?
