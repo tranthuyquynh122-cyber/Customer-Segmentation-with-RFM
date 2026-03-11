@@ -847,7 +847,6 @@ The trend charts show that repeat purchasing activity is strongly associated wit
 👉 Based on the insights above, we recommend the following:
 
 ### 1. Loyal & High Value Group (38.3%)
-1. Loyal & High Value Group (38.3%)
 
 - Represent **38.3% of customers but contribute the majority of total revenue**, indicating a strong concentration of value among loyal and high-frequency buyers.
 - Stable purchasing behavior and high engagement.
