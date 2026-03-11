@@ -968,7 +968,7 @@ This indicates customer disengagement is a major challenge and should not be ign
 ### 5. Frequency is a major business driver
 The trend charts show that repeat purchasing activity is strongly associated with growth in both customer value and revenue, especially during peak season.
 
-# 💡7. Insight & Recommendation
+# 7. 💡 Insight & Recommendation
 
 ## A. Customer Segmentation Strategy
 
