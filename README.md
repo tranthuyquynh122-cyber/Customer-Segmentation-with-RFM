@@ -1,6 +1,5 @@
-# 📊 Customer Segmentation using RFM for For Marketing Campaigns in A Retail Global SuperStore | Python
+# 📊 Customer Segmentation For Marketing Campaigns in A Retail Global SuperStore | Python | Python
 
-## 📌 Project Overview
 **Domain:** E-commerce / Retail Analytics  
 Author: Tran Thuy Quynh  
 Date: 2025  
@@ -21,8 +20,6 @@ Tools Used: Python (Pandas, NumPy, Matplotlib, Seaborn)
 📈 6. [Visualization & Analysis](#6-visualization--analysis)
 
 💡7. [Insight & Recommendation](#7-insight--recommendation)
-
-
 
 ---
 <a id="1-background--overview"></a>
