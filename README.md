@@ -101,7 +101,7 @@ The dataset consists of **two tables (sheets):**
 | UnitPrice | float64 | Price per unit of the product in sterling. |
 | CustomerID | float64 | Unique 5-digit identifier for each customer. |
 | Country | object | Name of the country where the customer resides. |
-
+</details>
 ---
 
 #### 📌 Sheet 2: Segmentation
