@@ -373,18 +373,6 @@ These products may represent **core items in the product catalog**, making them 
 
 Understanding product popularity also provides context for customer purchasing behavior when analyzing RFM segments.
 
----
-
-# 🔑UK Market Insights
-
-The UK market analysis reveals several key patterns:
-
-1. **Strong seasonal revenue growth**, especially in the final quarter of the year.
-2. **Small basket sizes dominate**, although occasional bulk purchases exist.
-3. **A small number of products drive a large share of sales volume.**
-
-These insights provide important context before applying the **RFM model**, helping interpret customer purchasing behavior more accurately.
-
 
 # 🧠 5. Apply RFM Model
 
@@ -913,7 +901,7 @@ The spike in late 2011 suggests that the business benefits strongly from seasona
 
 
 
-# 🔑 Key Takeaways from Visualization & Analysis
+# 🔑 Key Takeaways
 
 Several major conclusions can be drawn from the visual analysis:
 
