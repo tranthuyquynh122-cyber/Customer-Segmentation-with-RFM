@@ -142,7 +142,7 @@ The relationship is established through:
 This structure allows transaction data to be transformed into **customer-level behavioral insights for segmentation and marketing analysis.**
 
 
-<a id="data-cleaning--preprocessing"></a>
+<a id="3-data-cleaning--preprocessing"></a>
 ## 3. Data Cleaning & Preprocessing
 
 Before applying the RFM model, the dataset must be cleaned to ensure that the analysis reflects **actual purchasing behavior**.
@@ -193,16 +193,7 @@ df_retail["SalesAmount"] = (df_retail["Quantity"] * df_retail["UnitPrice"])
 ### ✅ Output of the cleaning step
 <img width="1039" height="359" alt="image" src="https://github.com/user-attachments/assets/50b52b5a-dec7-460c-b05e-658992627f40" />
 
-After cleaning, the dataset contains only:
-
-- valid purchases
-- customers with IDs
-- positive quantity and unit price
-- usable transaction dates
-
----
-
-<a id="exploratory-data-analysis-eda"></a>
+<a id="4-exploratory-data-analysis-edaa"></a>
 # 🔎 4. Exploratory Data Analysis (EDA)
 
 Before applying the RFM model, exploratory analysis was performed to understand customer purchasing behavior.
@@ -376,7 +367,7 @@ These products may represent **core items in the product catalog**, making them 
 Understanding product popularity also provides context for customer purchasing behavior when analyzing RFM segments.
 
 
-<a id="apply-rfm-model"></a>
+<a id="5-apply-rfm-model"></a>
 # 🧠 5. Apply RFM Model
 
 After exploring customer purchasing behavior in the UK market, the **RFM model (Recency, Frequency, Monetary)** is applied to segment customers based on their purchasing patterns.
@@ -592,7 +583,7 @@ The final table provides a **complete view of customer purchasing behavior and s
 
 ---
 
-<a id="visualization--analysis"></a>
+<a id="6-visualization--analysis"></a>
 # 📊 6. Visualization & Analysis
 
 After applying the RFM model, the next step is to visualize customer segments and interpret their business meaning.
@@ -930,7 +921,7 @@ The trend charts show that repeat purchasing activity is strongly associated wit
 
 ---
 
-<a id="insight--recommendation"></a>
+<a id="7-insight--recommendation"></a>
 # 💡 7. Insight & Recommendation
 
 
