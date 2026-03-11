@@ -1,4 +1,4 @@
-# 📊 Customer Segmentation For Marketing Campaigns in A Retail Global SuperStore | Python | Python
+# 📊 Customer Segmentation For Marketing Campaigns in A Retail Global SuperStore | Python 
 
 **Domain:** E-commerce / Retail Analytics  
 Author: Tran Thuy Quynh  
