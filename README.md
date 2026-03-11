@@ -524,54 +524,9 @@ def assign_rfm_segment(row):
 
 rfm_uk_table["Segment"] = rfm_uk_table.apply(assign_rfm_segment, axis=1)
 ```
-
----
-
-# Step 6 — Organize Segment Order
-
-To maintain logical ordering in visualizations, segments are converted into a categorical variable.
-
-```python
-segment_order = [
-    "Champions",
-    "Loyal Customers",
-    "Potential Loyalists",
-    "New Customers",
-    "Promising",
-    "Need Attention",
-    "About To Sleep",
-    "At Risk",
-    "Can't Lose Them",
-    "Hibernating",
-    "Lost"
-]
-
-rfm_uk_table["Segment"] = pd.Categorical(
-    rfm_uk_table["Segment"],
-    categories=segment_order,
-    ordered=True
-)
-```
-
 ---
 
 # Final RFM Table
-
-```python
-rfm_uk_table[
-    [
-        "CustomerID",
-        "Recency",
-        "Frequency",
-        "Monetary",
-        "R_score",
-        "F_score",
-        "M_score",
-        "RFM_Code",
-        "Segment"
-    ]
-].head()
-```
 <img width="653" height="189" alt="image" src="https://github.com/user-attachments/assets/46870c16-ca9d-483a-8950-f9cba73f9057" />
 
 
