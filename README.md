@@ -1,7 +1,6 @@
 # 📊 Customer Segmentation using RFM for For Marketing Campaigns in A Retail Global SuperStore | Python
 
 ## 📌 Project Overview
-**Business question:** How can we segment customers based on purchasing behavior to support targeted marketing strategies?  
 **Domain:** E-commerce / Retail Analytics  
 Author: Tran Thuy Quynh  
 Date: 2025  
