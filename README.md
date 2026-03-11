@@ -158,7 +158,6 @@ df_retail.columns = df_retail.columns.str.strip()
 Rows with missing `CustomerID` were removed because RFM is a **customer-level model**. Without customer IDs, transactions cannot be assigned to any customer.
 ```python
 df_retail = df_retail.dropna(subset=["CustomerID"])
-df_retail["CustomerID"] = df_retail["CustomerID"].astype(int)
 ```
 ### Step 3: Remove cancelled transactions
 Orders where `InvoiceNo` starts with `"C"` were excluded because they represent cancelled purchases rather than actual sales.
